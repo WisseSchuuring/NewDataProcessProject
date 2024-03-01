@@ -1,0 +1,13 @@
+rule all:
+    input:
+        "dummy_file.fa"
+
+include:
+    "rules/preprocess_reads.smk",
+    "rules/align_reads.smk",
+    "rules/process_SAM_and_BAM_files.smk",
+    "rules/remove_primers.smk",
+    "rules/mask_low-coverage_regions.smk",
+    "rules/variant_calling.smk",
+    "rules/consensus_calling.smk",
+    "rules/lineage_identification.smk"

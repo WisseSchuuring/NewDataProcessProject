@@ -5,5 +5,7 @@ rule preprocess_reads:
     output:
         out_R1 = "preprocessed_R1.fq.gz",
         out_R2 = "preprocessed_R2.fq.gz"
+    message:
+        "Preprocessing reads {input.R1} and {input.R2}..."
     shell:
         "fastp -i {input.R1} -I {input.R2} -o {output.out_R1} -O {output.out_R2}"

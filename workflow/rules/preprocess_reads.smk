@@ -1,10 +1,10 @@
 rule preprocess_reads:
     input:
-        R1 = "../data/fastq_files/S-Africa-variant-1_S123_L001_R1_001.fastq.gz",
-        R2 = "../data/fastq_files/S-Africa-variant-1_S123_L001_R2_001.fastq.gz"
+        R1 = config["datadir"] + "fastq_files/" + config["R1"] + ".fastq.gz",
+        R2 = config["datadir"] + "fastq_files/" + config["R2"] + ".fastq.gz"
     output:
-        out_R1 = "../data/output/preprocessed_R1.fq.gz",
-        out_R2 = "../data/output/preprocessed_R2.fq.gz"
+        out_R1 = config["datadir"] + "output/" + config["R1"] + "_preprocessed.fq.gz",
+        out_R2 = config["datadir"] + "output/" + config["R2"] + "_preprocessed.fq.gz"
     message:
         "Preprocessing reads {input.R1} and {input.R2}..."
     shell:

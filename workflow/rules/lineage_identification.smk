@@ -1,6 +1,9 @@
+include: "consensus_calling.smk"
+
 rule identify_lineage:
     input:
-        "consensus_sequence"
+        consensus = "../data/output/consensus_sequence.fa"
     output:
-        "dummy_file",
-        "lineage_report"
+        csv_file = "pangolin_lineage.csv"
+    shell:
+        "pangolin {input.consensus} -o ../data/finished --outfile {output.csv_file}"

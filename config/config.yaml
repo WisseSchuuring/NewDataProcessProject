@@ -1,0 +1,11 @@
+datadir: "/homes/wsfschuuring/Desktop/DataProcess/SECRET-PROJECT/NewDataProcessProject/data/"
+reference: "/homes/wsfschuuring/Desktop/DataProcess/SECRET-PROJECT/NewDataProcessProject/data/reference.fa"
+primers: "/homes/wsfschuuring/Desktop/DataProcess/SECRET-PROJECT/NewDataProcessProject/data/primers.bed"
+
+R1: S-Africa-variant-1_S123_L001_R1_001
+R2: S-Africa-variant-1_S123_L001_R2_001
+
+#samples:
+#  Africa:
+#    R1: S-Africa-variant-1_S123_L001_R1_001
+#    R2: S-Africa-variant-1_S123_L001_R2_001

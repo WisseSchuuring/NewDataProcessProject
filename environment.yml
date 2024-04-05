@@ -1,0 +1,6 @@
+channels:
+  - defaults
+dependencies:
+    python=3.10
+    samtools=1.19.2
+    lofreq=2.1.5

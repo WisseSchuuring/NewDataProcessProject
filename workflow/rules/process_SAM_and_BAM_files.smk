@@ -1,15 +1,22 @@
-rule process_BAM_and_SAM_files:
+include: "align_reads.smk"
+
+rule sort_BAM_and_SAM_files:
     input:
-        in_read = "aligned_reads.sam"
+        in_read = "../data/output/aligned_reads.sam"
     output:
-        out_sorted = "processed_reads_sorted.bam",
-        out_fixmate = "processed_reads_fixmate.bam"
+        out_sorted = "../data/output/processed_reads_sorted.bam"
     message:
-        "Processing aligned file(s)..."
+        "sorting aligned file(s)..."
     shell:
-        "samtools sort -n -O bam -o {output.out_read}.bam {input.in_read} |"
-        
-        "samtools fixmate -m {output.out_read} {output.out_fixmate} | "
-        
-        "samtools sort -O bam -o {output.out_sorted} -T "
-        "{input.in_read}_temp.txt {output.out_fixmate}"
+        "samtools sort -n -O bam -o {output.out_sorted} {input.in_read}"
+
+rule fixmate_files:
+    input:
+        out_sorted = "../data/output/processed_reads_sorted.bam"
+    output:
+        out_fixmate = "../data/output/processed_reads_sorted_fixmate.bam"
+    message:
+        "utilising fixmate..."
+    shell:
+        "samtools fixmate -m {input.out_sorted} {output.out_fixmate}"
+

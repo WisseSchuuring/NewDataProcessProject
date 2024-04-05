@@ -1,9 +1,10 @@
-rule call_variant:
+include: "indelqual_bamfile.smk"
+
+rule call_variants:
     input:
-        in_fasta = "reference_masked.fasta"
+        indel_bam = "../data/output.indel.bam",
+        ref= "../data/output/reference_masked.fasta"
     output:
-        varcalled = "variant_called_dummy.fasta"
-    # wrapper:
-    #     "v2.2.1/bio/lofreq/call"
+        variants = "../data/output/vars.vcf.gz"
     shell:
-        "lofreq call-parallel --pp-threads $thread_num --call-indels -f $directory/"$label"_reference.fa -o $directory/"$label"_indel.vcf $directory/"$label"_indel.bam"
+        "lofreq call --call-indels -f {input.ref} -o {output.variants} {input.indel_bam}"

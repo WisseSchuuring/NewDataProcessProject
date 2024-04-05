@@ -1,7 +1,10 @@
+include: "variant_calling.smk"
+
 rule call_consensus:
     input:
-        "variant_called_dummy"
+        ref = "../data/output/reference_masked.fasta",
+        variants = "../data/output/vars.vcf.gz"
     output:
-        "consensus_sequence"
-    wrapper:
-        "v2.2.1/bio/bcftools/call"
+        consensus = "../data/output/consensus_sequence.fa"
+    shell:
+        " bcftools consensus -f {input.ref} {input.variants} -o {output.consensus}"

@@ -4,16 +4,16 @@ rule build_index:
     input:
         ref_fasta = config["reference"]
     params:
-         buildfile_base_name= config["datadir"] + "output/buildfiles/buildfile"
+         buildfile_base_name= config["outputdir"] + "buildfiles/buildfile"
     output:
-        buildfile1 = "../output/buildfiles/buildfile.1.bt2",
-        buildfile2= "../output/buildfiles/buildfile.2.bt2",
-        buildfile3= "../output/buildfiles/buildfile.3.bt2",
-        buildfile4= "../output/buildfiles/buildfile.4.bt2",
-        buildfile5= "../output/buildfiles/buildfile.rev.1.bt2",
-        buildfile6= "../output/buildfiles/buildfile.rev.2.bt2"
+        buildfile1 = config["outputdir"] + "buildfiles/buildfile.1.bt2",
+        buildfile2= config["outputdir"] + "buildfiles/buildfile.2.bt2",
+        buildfile3= config["outputdir"] + "buildfiles/buildfile.3.bt2",
+        buildfile4= config["outputdir"] + "buildfiles/buildfile.4.bt2",
+        buildfile5= config["outputdir"] + "buildfiles/buildfile.rev.1.bt2",
+        buildfile6= config["outputdir"] + "buildfiles/buildfile.rev.2.bt2"
     shell:
-        "bowtie2-build {input.ref_fasta} ../output/buildfiles/buildfile"
+        "bowtie2-build {input.ref_fasta} {params.buildfile_base_name}"
 
 
 rule align_reads:

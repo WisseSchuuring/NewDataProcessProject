@@ -5,8 +5,9 @@ rule mask_lowCoverage_regions:
         bamfile = rules.remove_primers.output.out_bam,
         ref_fasta = config["reference"]
     output:
-        masked_ref = config["outputdir"] + "masked_low_cov/" + config["R1"] + config["R2"] + "_masked.fasta"
+        masked_ref = config["outputdir"] + "masked_low_cov/" + config["R1"] + config["R2"] + "_masked.fasta",
+        lowcovmask = config["outputdir"] + "masked_low_cov/" + config["R1"] + config["R2"] + "_lowcovmask.bed"
     shell:
         "bedtools genomecov -ibam {input.bamfile} -bga | "
-        "bedtools merge -i - 1>{input.bamfile}_lowcovmask.bed | "
-        "bedtools maskfasta -fi {input.ref_fasta} -bed {input.bamfile}_lowcovmask.bed -fo {output.masked_ref}"
+        "bedtools merge -i - 1>{output.lowcovmask} | "
+        "bedtools maskfasta -fi {input.ref_fasta} -bed {output.lowcovmask} -fo {output.masked_ref}"

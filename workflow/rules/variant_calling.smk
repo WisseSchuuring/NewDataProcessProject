@@ -5,6 +5,7 @@ rule call_variants:
         indel_bam = rules.lofreq_dindel_indelqual.output.indel_bam,
         ref = rules.mask_lowCoverage_regions.output.masked_ref
     output:
-        variants = config["outputdir"] + "variants/" + config["R1"] + config["R2"] + "_vars.vcf.gz"
+        variants = config["outputdir"] + "variants/" + config["R1"] + config["R2"] + "_vars.vcf.gz",
+        variant_tbi = config["outputdir"] + "variants/" + config["R1"] + config["R2"] + "_vars.vcf.gz.tbi"
     shell:
         "lofreq call --call-indels -f {input.ref} -o {output.variants} {input.indel_bam}"

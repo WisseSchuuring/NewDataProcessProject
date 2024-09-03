@@ -1,7 +1,7 @@
 configfile: "/homes/wsfschuuring/Desktop/DataProcess/SECRET-PROJECT/NewDataProcessProject/config/config.yaml"
 
-include: "rules/consensus_calling.smk"
+include: "rules/create_visual.smk"
 
 rule all:
     input:
-        consensus_file = rules.call_consensus.output.consensus
+        output_png = rules.create_visual.output.barplot_png

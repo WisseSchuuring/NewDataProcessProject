@@ -1,0 +1,7 @@
+name: pangolin
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - pangolin
+  - snakemake 7.16.0

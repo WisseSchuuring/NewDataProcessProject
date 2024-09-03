@@ -40,10 +40,11 @@ Further commands and options for conda can be found on the official Conda websit
 
 Once Installations are complete, simply run the program from the proper directory with the following command:
 ```
-snakemake -c
+snakemake -c --use-conda
 ```
-where -c indicated the amount of cores the user wishes to use. If the user wishes to perform a dry-run, 
-they can add -n to the command. further options can be found on the snakemake official website:
+where -c indicated the amount of cores the user wishes to use, and --use-conda ensures the correct environment
+is used for each step. WARNING: If --use-conda is not added, the lineage step will fail! If the user wishes to 
+perform a dry-run, they can add -n to the command. further options can be found on the snakemake official website:
 
 https://snakemake.readthedocs.io/en/v5.6.0/executable.html
 

@@ -1,0 +1,63 @@
+---
+title: "VariantVisualizer"
+author: "Wisse Schuuring"
+date: "2024-08-31"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Description
+This R markdown document is part of a larger snakemake pipeline project called NewDataProcessProject,
+and thus is to be used within that pipeline only.
+
+https://github.com/WisseSchuuring/NewDataProcessProject
+
+
+## Input File
+
+The snakemake pipeline creates a csv report using pangolin. This csv report documents the ambiguity score,
+which is a function of the quantity of missing data in a sequence. It represents the proportion of relevant
+sites in a sequence which were assigned to the reference values. A score of 1 indicates that no sites were
+imputed, while a score of 0 indicates that more sites were imputed than were not imputed. This score only
+includes sites which are used by the decision tree to classify a sequence.
+
+```{r test dataframe}
+df <- data.frame(sequence_name = c("Africa_variant_R1","Africa_variant_R2", "UK_variant_R1", "UK_variant_R2"), lineage = c("B","B","A","A.1"))
+print(df)
+
+```
+
+
+```{r csv reader}
+# Read in the csv file from the pangolin program
+read_pangolin <- function(file_path){
+  pangolin_output <- read.csv(file=file_path, sep=",", header=T)
+}
+
+df <- read_pangolin(file_path = snakemake@input[[1]])
+```
+
+## Plots
+
+```{r plot, echo=FALSE}
+# create the barplot
+create_barplot <- function(data, names){
+   barplot(height=data,
+           ylab = "lineage",
+           xlab = "lineage amount",
+           main = "Amount of assigned sequences by lineage",
+           col="lightgreen",
+           horiz = T)
+}
+
+
+# Export the barplot as a png
+png(snakemake@output[[1]])
+create_barplot(table(df$lineage))
+
+    
+```
+

@@ -1,4 +1,5 @@
 datadir: "/homes/wsfschuuring/Desktop/DataProcess/SECRET-PROJECT/NewDataProcessProject/data/"
+outputdir: "/homes/wsfschuuring/Desktop/DataProcess/SECRET-PROJECT/NewDataProcessProject/output/"
 reference: "/homes/wsfschuuring/Desktop/DataProcess/SECRET-PROJECT/NewDataProcessProject/data/reference.fa"
 primers: "/homes/wsfschuuring/Desktop/DataProcess/SECRET-PROJECT/NewDataProcessProject/data/primers.bed"
 

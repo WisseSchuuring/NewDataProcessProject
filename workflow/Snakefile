@@ -4,4 +4,4 @@ include: "rules/consensus_calling.smk"
 
 rule all:
     input:
-        consensus_file = config["datadir"] + config["R1"] + config["R2"] + "_consensus_sequence.fa"
+        consensus_file = rules.call_consensus.output.consensus

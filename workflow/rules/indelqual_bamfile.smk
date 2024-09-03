@@ -2,10 +2,10 @@ include: "mask_low-coverage_regions.smk"
 
 rule lofreq_dindel_indelqual:
     input:
-        bamfile = config["datadir"] + config["R1"] + config["R2"] + "_primers_removed_bamfile_ivar.bam",
-        ref = config["datadir"] + config["R1"] + config["R2"] + config["reference"] + "_masked.fasta"
+        bamfile = rules.remove_primers.output.out_bam,
+        ref = rules.mask_lowCoverage_regions.output.masked_ref
     output:
-        indel_bam = config["datadir"] + config["R1"] + config["R2"] + "_output.indel.bam"
+        indel_bam = config["outputdir"] + "indelqual/" + config["R1"] + config["R2"] + "_output.indel.bam"
     shell:
         "lofreq indelqual {input.bamfile} --dindel -f {input.ref} -o {output.indel_bam}"
 

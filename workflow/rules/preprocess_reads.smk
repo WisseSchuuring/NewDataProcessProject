@@ -3,8 +3,8 @@ rule preprocess_reads:
         R1 = config["datadir"] + "fastq_files/" + config["R1"] + ".fastq.gz",
         R2 = config["datadir"] + "fastq_files/" + config["R2"] + ".fastq.gz"
     output:
-        out_R1 = config["datadir"] + "output/" + config["R1"] + "_preprocessed.fq.gz",
-        out_R2 = config["datadir"] + "output/" + config["R2"] + "_preprocessed.fq.gz"
+        out_R1 = config["outputdir"] + "preprocess/" + config["R1"] + "_preprocessed.fq.gz",
+        out_R2 = config["outputdir"] + "preprocess/" + config["R2"] + "_preprocessed.fq.gz"
     message:
         "Preprocessing reads {input.R1} and {input.R2}..."
     shell:

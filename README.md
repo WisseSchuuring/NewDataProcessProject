@@ -48,6 +48,16 @@ perform a dry-run, they can add -n to the command. further options can be found 
 
 https://snakemake.readthedocs.io/en/v5.6.0/executable.html
 
+After execution of the pipeline, the user ends up with a visual representation of the amount of sequences
+assigned to a specific lineage. Lineages are assigned according to pangolin designation. Full names and descriptions
+of each assigned lineage can be found on the following github page:
+
+https://github.com/cov-lineages/pango-designation/blob/master/lineage_notes.txt
+
+an example of the outputted png file:
+
+![image](images/example_plot.png)
+
 ## Contact
 
 This pipeline was developed by Wisse Schuuring, student at Hanze university of applied sciences in 2023-2024.

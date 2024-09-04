@@ -7,5 +7,7 @@ rule call_variants:
     output:
         variants = config["outputdir"] + "variants/" + config["R1"] + config["R2"] + "_vars.vcf.gz",
         variant_tbi = config["outputdir"] + "variants/" + config["R1"] + config["R2"] + "_vars.vcf.gz.tbi"
+    message:
+        "Calling variants..."
     shell:
         "lofreq call --call-indels -f {input.ref} -o {output.variants} {input.indel_bam}"

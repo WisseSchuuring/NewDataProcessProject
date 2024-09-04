@@ -7,5 +7,7 @@ rule call_consensus:
         variants_tbi = rules.call_variants.output.variant_tbi
     output:
         consensus = config["outputdir"] + "consensus/" + config["R1"] + config["R2"] + "_consensus_sequence.fa"
+    message:
+        "Creating consensus sequence..."
     shell:
         "bcftools consensus -f {input.masked_ref} {input.variants} -o {output.consensus}"

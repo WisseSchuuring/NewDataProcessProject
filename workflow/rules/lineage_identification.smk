@@ -7,5 +7,7 @@ rule identify_lineage:
         csv_file = config["outputdir"] + "pangolin/lineage_report.csv"
     conda:
         "../envs/pangolin.yml"
+    message:
+        "Identifying lineage using pangolin..."
     shell:
         "pangolin {input.consensus} --outfile {output.csv_file}"

@@ -23,6 +23,8 @@ This adaptation of Havoc performs the following steps in order:
 9. Lineage identification: identifies which Cov lineage the consensus sequence aligns to most using pangolin
 10. Create visual: creates a visual representation of the sequences and their assigned lineage in the form of a bar plot
 
+![image](images/dag.png)
+
 ## Installation
 
 It is strongly recommended for the user to have either Conda or Mamba installed,
